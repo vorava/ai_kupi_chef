@@ -1,0 +1,2 @@
+# AI kupi.cz chef
+

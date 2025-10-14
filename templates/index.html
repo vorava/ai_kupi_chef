@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>AI KUPI Chef</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container-fluid mx-auto px-4">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"> 
+                <img src="{{ url_for('static', filename='favicon.ico') }}" alt="AI KUPI Chef" width="32" height="32" class="d-inline-block align-text-top">&nbsp;
+                <span class="fs-4">AI kupi.cz chef</span>
+            </a>
+
+            <ul class="nav nav-tabs">
+                {% for shop in shops %}
+                    {% if shop_name == shop %}
+                        <li class="nav-item"><a href="/{{shop}}" class="nav-link active" aria-current="page">{{shop}}</a></li>
+                    {% else %}
+                        <li class="nav-item"><a href="/{{shop}}" class="nav-link">{{shop}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            
+            <button type="button" class="btn btn-warning" id="help" onclick="show_help()">Zobraz návod</button>
+        </header>
+
+    
+
+        <div class="row g-5">
+            <div class="col-md-6 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Seznam slev v obchodě {{shop_name}}</span>
+                </h4>
+
+               
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    {% for chunk in discounts|batch(ceil(discounts|length / 3), fill_with=None) %}
+                    <div class="col">
+                        <ul class="list-group mb-3">
+                        {% for d in chunk if d %}
+                            {% set name, price, amount = d %}
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">{{ name }}</h6>
+                                <small class="text-muted">{{ amount }}</small>
+                            </div>
+                            <span class="text-muted">{{ price }}</span>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                
+            </div>
+
+            <!-- right side -->
+            <div class="col-md-6 order-md-last">
+                
+                <h4 class="text-primary col-4 mb-3">Kategorie receptu</h4>
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <ul class="nav nav-pills">
+                            {% for (cat, cat_spelling) in categories %}
+                                <button 
+                                class="btn btn-outline-light mb-2 mx-2 category-btn" 
+                                type="button" 
+                                onclick="selectCategory(this, '{{cat}}')">
+                                {{cat_spelling}}
+                                </button>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="row mb-5">
+                    <h4 class="col-9">Počet stránek letáku (čím větší, tím vyšší spotřeba tokenů, 0 = všechny strany):</h4>
+                    <div class="col-1">
+                        <input class="form-control" type="number" id="pages" name="pages" min="0" max="25" value="{{pages_value}}">
+                    </div>
+                </div>
+
+                
+                <div class="row mb-5">
+                    <h4 class="col-9">Počet K nejvhodnějších receptů, které budou AI šéfovi předány k inspiraci:</h4>
+                     <div class="col-1">
+                        <input class="form-control" type="number" id="topk" name="topk" min="1" max="25" value="{{topk_value}}">
+                    </div>
+                </div>
+
+                <div class="row mb-5 justify-content-center">
+                    <button type="button" class="btn btn-warning btn-lg col-4" onclick="run_chat()" id="run_chat">SPUSTIT AI ŠÉFA</button>
+                </div>
+
+                <h2 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Vygenerované recepty</span>
+                </h2>
+                <div class="border border-2 border-success p-2 rounded" id="response">
+                    {% if response %}
+                        {{response}}
+                    {% else %}
+                        <h2>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h2>
+                        Vyberte nahoře obchod a kategorii receptu a spuštete AI šéfe, který doporučí 3 recepty na základě dostupných surovin ve slevě a zvolené kategorie. Je možné nastavit počet stránek letáku daného obchodu z nichž se budou slevy načítat a počet K nejvhodnějších receptů, které odpovídají načteným ingrediencím ve slevě. To vše bude předáno AI šéfovi.
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <script>
+        function selectCategory(button, category) {
+           
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-outline-light');
+            });
+
+            
+            button.classList.remove('btn-outline-light');
+            button.classList.add('btn-primary');
+
+            
+            fetch('/set_category', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ category: category })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.category-btn');
+            if (buttons.length >= 2) {
+                const secondButton = buttons[1];
+                const category = secondButton.textContent.trim();
+                selectCategory(secondButton, category);
+            }
+        });
+
+        function run_chat() {
+            window.document.getElementById('response').innerHTML = "<h2>Vyčkejte prosím, odpověď se generuje...</h2>";
+
+            fetch('/run_chat', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.document.getElementById('response').innerHTML = data.response;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+         
+        
+        document.getElementById('pages').addEventListener('change', async (event) => {
+            window.document.getElementById("run_chat").disabled = true;
+            window.document.getElementById("response").innerHTML = "<h2>Vyčkejte prosím na načtení seznamu slev.</h2>";
+            const pages = event.target.value;
+
+            await fetch('/set_pages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pages: parseInt(pages) })
+            });
+            location.reload();
+        });
+
+        document.getElementById('topk').addEventListener('change', async (event) => {
+            const topk = event.target.value;
+
+            await fetch('/set_topk', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ topk: parseInt(topk) })
+            });
+        });
+
+        function show_help(){
+            window.document.getElementById("response").innerHTML = " \
+            <h2>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h2>\
+                        Vyberte nahoře obchod a kategorii receptu a spuštete AI šéfe, který doporučí 3 recepty na základě dostupných surovin ve slevě a zvolené kategorie. Je možné nastavit počet stránek letáku daného obchodu z nichž se budou slevy načítat a počet K nejvhodnějších receptů, které odpovídají načteným ingrediencím ve slevě. To vše bude předáno AI šéfovi.";
+        }
+
+    </script>
+</body>
+</html>
