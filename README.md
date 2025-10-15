@@ -27,7 +27,11 @@ This part describes installation process. Application should work on both Linux/
     
     > python -m venv venv
     
+    For Linux/WSL
     > source venv/bin/activate
+    
+    For Windows
+    > .\venv\Scripts\activate.bat
 
 3) Install requirements.txt.
 
@@ -37,7 +41,11 @@ This part describes installation process. Application should work on both Linux/
 
 5) Application expects API key to be obtained from environment variable **OPENAI_API_KEY**. Do this by the following command.
 
+    For Linux/WSL
     > export OPENAI_API_KEY="your_api_key_here"
+
+    For Windows (YOU HAVE TO RESTART CMD AFTER THIS STEP)
+    > setx OPENAI_API_KEY "your_api_key_here"
 
 *Note: It might be required from OpenAI to have some balance in your OpenAI API account. Minimal top up of balance is 5$. One request of AI chef takes around 0.01-0.03$.*
 

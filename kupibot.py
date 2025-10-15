@@ -11,7 +11,7 @@ from typing import List, Dict
     OPENAI_API_KEY should be enviroment variable
     Can be set with export OPENAI_API_KEY=sk-...
 """
-openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.getenv("OPENAI_API_KEY")
 from openai import OpenAI
 
 
