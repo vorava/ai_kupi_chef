@@ -1,0 +1,83 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0" version="28.2.5">
+  <diagram name="Stránka-1" id="Kyyzd-9UIII-L8wZNd_1">
+    <mxGraphModel dx="2012" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-1" target="8qqyHOmHYVsA-W75Ik3h-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-1" value="Recipes from kupi.cz downloaded before" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-3" target="8qqyHOmHYVsA-W75Ik3h-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-3" value="embeddings of recipes" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-5" target="8qqyHOmHYVsA-W75Ik3h-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-5" value="saved locally in the folder recipes_embeddings (precomputed)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-7" target="8qqyHOmHYVsA-W75Ik3h-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-7" value="Current sales and discounts from web kupi.cz" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-8" target="8qqyHOmHYVsA-W75Ik3h-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-8" value="embeddings of discounts" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-10" target="8qqyHOmHYVsA-W75Ik3h-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-10" value="compared using cossine similarity" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-15" target="8qqyHOmHYVsA-W75Ik3h-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-15" value="top K matches (most fitting recipes embeddings)&lt;div&gt;- &lt;b&gt;this can be set by user&lt;/b&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="380" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-17" value="embedding transformed back to recipes as texts" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-19" target="8qqyHOmHYVsA-W75Ik3h-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-19" value="discounts and top K recipes serves as an input for GPT with appropriate prompt" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="314" y="550" width="136" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.86;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-17" target="8qqyHOmHYVsA-W75Ik3h-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.18;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8qqyHOmHYVsA-W75Ik3h-7" target="8qqyHOmHYVsA-W75Ik3h-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="520" />
+              <mxPoint x="339" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-24" value="result: 3 recommended/generated recipes" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="308" y="680" width="148" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-26" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;strokeWidth=4;" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="510" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="8qqyHOmHYVsA-W75Ik3h-27" value="output of embedding_downloader.py script" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="190" width="150" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

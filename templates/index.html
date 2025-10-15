@@ -81,7 +81,7 @@
                 
                 <div class="row mb-5">
                     <h4 class="col-9">Počet stránek letáku (čím větší, tím vyšší spotřeba tokenů, 0 = všechny strany):</h4>
-                    <div class="col-1">
+                    <div class="col-1 col-md-3 col-sm-3">
                         <input class="form-control" type="number" id="pages" name="pages" min="0" max="25" value="{{pages_value}}">
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 
                 <div class="row mb-5">
                     <h4 class="col-9">Počet K nejvhodnějších receptů, které budou AI šéfovi předány k inspiraci:</h4>
-                     <div class="col-1">
+                     <div class="col-1 col-md-3 col-sm-3">
                         <input class="form-control" type="number" id="topk" name="topk" min="1" max="25" value="{{topk_value}}">
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     {% if response %}
                         {{response}}
                     {% else %}
-                        <h2>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h2>
+                        <h4>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h4>
                         Vyberte nahoře obchod a kategorii receptu a spuštete AI šéfe, který doporučí 3 recepty na základě dostupných surovin ve slevě a zvolené kategorie. Je možné nastavit počet stránek letáku daného obchodu z nichž se budou slevy načítat a počet K nejvhodnějších receptů, které odpovídají načteným ingrediencím ve slevě. To vše bude předáno AI šéfovi.
                     {% endif %}
                 </div>
@@ -195,7 +195,7 @@
 
         function show_help(){
             window.document.getElementById("response").innerHTML = " \
-            <h2>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h2>\
+            <h4>Toto je informační okno. Zatím zde nic není. Jenom návod na ovládání :)</h4>\
                         Vyberte nahoře obchod a kategorii receptu a spuštete AI šéfe, který doporučí 3 recepty na základě dostupných surovin ve slevě a zvolené kategorie. Je možné nastavit počet stránek letáku daného obchodu z nichž se budou slevy načítat a počet K nejvhodnějších receptů, které odpovídají načteným ingrediencím ve slevě. To vše bude předáno AI šéfovi.";
         }
 
