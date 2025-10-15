@@ -3,7 +3,7 @@
 This project is a utilization of **LLM from OpenAI** and my own pip package **kupiapi**. AI kupi.cz chef is RAG (Retrieval-augmented generation) system capable of generating/creating recipes based on the standard recipes available at [https://www.kupi.cz/recepty](https://www.kupi.cz/recepty). The core idea is that AI chef considers sales and discount from selected shop when generating recipes. This allows user to generate recipes from ingredients in sale from his/her favourite grocery shop. 
 
 The application is in Czech language and works with data from Czech shops, scraping them from [https://www.kupi.cz](https://www.kupi.cz). Application is build with Flask in the backend and Bootstrap in the frontend.
-In the current state, AI chef can process discounts from these shops (6 well-known shops in the Czech Republic):
+In the current state, AI chef can process discounts from these shops (7 well-known shops in the Czech Republic):
 
 - Lidl
 - Albert
@@ -11,6 +11,7 @@ In the current state, AI chef can process discounts from these shops (6 well-kno
 - Kaufland
 - Tesco
 - Globus
+- Penny market
 
 User can set various parameters to influence recipes generation (AI chef generates 3 recipes per request). These parameters are:
 
