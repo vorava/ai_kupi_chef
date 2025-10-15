@@ -16,11 +16,11 @@
             </a>
 
             <ul class="nav nav-tabs">
-                {% for shop in shops %}
+                {% for shop_name, shop in shops %}
                     {% if shop_name == shop %}
-                        <li class="nav-item"><a href="/{{shop}}" class="nav-link active" aria-current="page">{{shop}}</a></li>
+                        <li class="nav-item"><a href="/{{shop}}" class="nav-link active" aria-current="page">{{shop_name}}</a></li>
                     {% else %}
-                        <li class="nav-item"><a href="/{{shop}}" class="nav-link">{{shop}}</a></li>
+                        <li class="nav-item"><a href="/{{shop}}" class="nav-link">{{shop_name}}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -143,9 +143,8 @@
         window.addEventListener('DOMContentLoaded', () => {
             const buttons = document.querySelectorAll('.category-btn');
             if (buttons.length >= 2) {
-                const secondButton = buttons[1];
-                const category = secondButton.textContent.trim();
-                selectCategory(secondButton, category);
+                const secondButton = buttons[1]
+                selectCategory(secondButton, 'hlavni-jidla');
             }
         });
 
